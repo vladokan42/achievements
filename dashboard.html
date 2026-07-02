@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Достижения — Окань Владислав</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap');
+
+  :root {
+    --bg: #f7f7f5;
+    --card: #ffffff;
+    --border: #e8e6e1;
+    --text: #1a1a18;
+    --text2: #6b6b63;
+    --text3: #9a9a8f;
+    --accent: #1a56db;
+    --accent-light: #eff6ff;
+    --green: #0d7d4a;
+    --green-bg: #eaf7f0;
+    --amber: #b45309;
+    --amber-bg: #fef9ef;
+    --red: #c92a2a;
+    --red-bg: #fef2f2;
+    --purple: #7c3aed;
+    --purple-bg: #f5f3ff;
+    --teal: #0d7d6e;
+    --teal-bg: #eaf7f5;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,.04), 0 1px 2px rgba(0,0,0,.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.04), 0 2px 4px rgba(0,0,0,.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 24px 80px;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .header h1 {
+    font-size: 34px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .header .subtitle {
+    font-size: 16px;
+    color: var(--text2);
+    font-weight: 400;
+  }
+  .header .meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .header .meta .tag {
+    font-size: 13px;
+    padding: 4px 12px;
+    border-radius: 100px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text2);
+    font-weight: 500;
+  }
+
+  /* Stats row */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    box-shadow: var(--shadow);
+  }
+  .stat-card .stat-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: -0.5px;
+  }
+  .stat-card .stat-label {
+    font-size: 13px;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  /* Section title */
+  .section-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 16px;
+    letter-spacing: -0.3px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title .count {
+    font-size: 13px;
+    background: var(--border);
+    padding: 2px 10px;
+    border-radius: 100px;
+    font-weight: 500;
+    color: var(--text2);
+  }
+
+  /* Achievement card */
+  .achievement {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .2s;
+  }
+  .achievement:hover { box-shadow: var(--shadow-md); }
+
+  .achievement .cat-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 12px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .cat-automation   { background: var(--accent-light); color: var(--accent); }
+  .cat-analytics    { background: var(--purple-bg); color: var(--purple); }
+  .cat-procurement  { background: var(--teal-bg); color: var(--teal); }
+  .cat-process      { background: var(--amber-bg); color: var(--amber); }
+  .cat-other        { background: #f3f4f6; color: #4b5563; }
+
+  .achievement h3 {
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .achievement .summary {
+    font-size: 14px;
+    color: var(--text2);
+    margin-bottom: 20px;
+    max-width: 700px;
+  }
+
+  /* Pipeline */
+  .pipeline {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 0;
+    align-items: start;
+    margin-bottom: 20px;
+    padding: 16px 0;
+  }
+  @media (max-width: 768px) {
+    .pipeline {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .pipeline .arrow { display: none; }
+  }
+
+  .pipe-step {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    background: #fafaf9;
+    border: 1px solid var(--border);
+  }
+  .pipe-step .step-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+  .pipe-step .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .pipe-step .step-detail {
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.5;
+  }
+  .pipe-step.problem  { border-left: 3px solid var(--red); }
+  .pipe-step.solution { border-left: 3px solid var(--accent); }
+  .pipe-step.result   { border-left: 3px solid var(--green); }
+
+  .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 8px;
+    color: var(--text3);
+    font-size: 20px;
+    font-weight: 300;
+  }
+
+  /* Metrics */
+  .metrics {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .metric {
+    flex: 1 1 140px;
+    min-width: 130px;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    background: var(--green-bg);
+    border: 1px solid #d1f0df;
+  }
+  .metric .metric-val {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--green);
+    letter-spacing: -0.5px;
+  }
+  .metric .metric-label {
+    font-size: 12px;
+    color: #4a8a63;
+    margin-top: 2px;
+  }
+  .metric.warn { background: var(--amber-bg); border-color: #fde68a; }
+  .metric.warn .metric-val { color: var(--amber); }
+  .metric.warn .metric-label { color: #a0721a; }
+
+  /* Initiative section */
+  .initiative {
+    background: var(--card);
+    border: 1px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    opacity: 0.85;
+  }
+  .initiative .init-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: #f3f4f6;
+    color: #6b7280;
+    margin-bottom: 10px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .initiative h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .initiative .init-desc {
+    font-size: 13px;
+    color: var(--text2);
+    margin-bottom: 10px;
+  }
+  .initiative .init-blocker {
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .initiative .init-blocker .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; padding: 20px; }
+    .achievement, .initiative { break-inside: avoid; box-shadow: none; }
+    .header { border-bottom-color: #ddd; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>Достижения и инициативы</h1>
+    <div class="subtitle">Окань Владислав — категорийный менеджер, ООО ТД «ЛФБ»</div>
+    <div class="meta">
+      <span class="tag">📋 8 000+ позиций номенклатуры</span>
+      <span class="tag">🏭 ~40 поставщиков</span>
+      <span class="tag">📅 2025–2026</span>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Реализованный проект</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Инициатив на паузе</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">~5 мин</div>
+      <div class="stat-label">Экономия на 1 спецификации</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">1–2 дня</div>
+      <div class="stat-label">Ускорение цикла согласования</div>
+    </div>
+  </div>
+
+  <!-- Achievements -->
+  <div class="section-title">
+    ✅ Реализованные проекты
+    <span class="count">1</span>
+  </div>
+
+  <!-- Achievement 1: Спецификация -->
+  <div class="achievement">
+    <span class="cat-badge cat-automation">Автоматизация</span>
+    <h3>Автозаполнение спецификаций через Power Query + общий отчёт 1С</h3>
+    <p class="summary">
+      Устранил ручной перенос параметров товара из карточек номенклатуры в спецификации. 
+      Процесс, который требовал поиска по каждой позиции вручную и часто приводил к ожиданию ответа поставщика, 
+      теперь выполняется за секунды.
+    </p>
+
+    <!-- Pipeline -->
+    <div class="pipeline">
+      <div class="pipe-step problem">
+        <div class="step-label">Было</div>
+        <div class="step-title">Ручное заполнение</div>
+        <div class="step-detail">
+          Десятки колонок (размер, вес, штрихкод, параметры) заполнялись вручную из карточек номенклатуры. 
+          В лучшем случае — 5 минут на позицию. В худшем — отправка пустой спецификации поставщику и ожидание 1–2 дня.
+        </div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="pipe-step solution">
+        <div class="step-label">Решение</div>
+        <div class="step-title">Power Query + выгрузка 1С</div>
+        <div class="step-detail">
+          Реализовал выгрузку общего отчёта со всеми реквизитами товаров из 1С. 
+          При открытии файла Power Query подтягивает актуальные данные. 
+          Формула ВПР протянута на всех ячейках.
+        </div>
+      </div>
+      <div class="arrow">→</div>
+      <div class="pipe-step result">
+        <div class="step-label">Стало</div>
+        <div class="step-title">Артикул + цена — и готово</div>
+        <div class="step-detail">
+          Для заполнения спецификации достаточно вставить артикул и цену. 
+          Поставщику остаётся только распечатать и подписать — 10 минут вместо цикла ожидания.
+        </div>
+      </div>
+    </div>
+
+    <!-- Metrics -->
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val">~5 мин → сек</div>
+        <div class="metric-label">Время на 1 позицию</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">1–2 дня → 10 мин</div>
+        <div class="metric-label">Цикл согласования с поставщиком</div>
+      </div>
+      <div class="metric warn">
+        <div class="metric-val">0 ошибок</div>
+        <div class="metric-label">Ручной ввод исключён</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Initiatives: projects waiting for response -->
+  <div class="section-title" style="margin-top: 48px;">
+    ⏳ Инициативы — проработаны, ждут ответа
+    <span class="count">0</span>
+  </div>
+
+  <div style="text-align: center; padding: 32px; color: var(--text3); font-size: 14px; border: 1px dashed var(--border); border-radius: var(--radius); background: var(--card);">
+    Здесь появятся проекты, которые ты детально проработал, но не получил ответа от ответственных лиц.
+    <br>Ты — инициатор, блокер — отсутствие обратной связи. Это не твоя зона ответственности.
+  </div>
+
+  <!-- Footer -->
+  <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); display: flex; justify-content: space-between;">
+    <span>Подготовлено: июль 2026</span>
+    <span>Окань Владислав · ООО ТД «ЛФБ»</span>
+  </div>
+
+</div>
+</body>
+</html>
